@@ -2,7 +2,7 @@ function Footer() {
   return (
     <>
       {/* footer */}
-      <footer class="p-4 bg-red-700 rounded-lg shadow md:px-6 md:py-8 dark:bg-gray-800">
+      <footer class="p-4 bg-black  shadow md:px-6 md:py-8 dark:bg-gray-800">
         <div class="sm:flex sm:items-center sm:justify-between">
           <a href="https://flowbite.com" class="flex items-center mb-4 sm:mb-0">
             <img src="img/footer.png" class="mr-3 h-14" alt="Flowbite Logo" />
