@@ -1,115 +1,36 @@
+import Axios from "axios";
+import React, { useState, useEffect } from "react";
+import Footer from "./Footer";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
-import Footer from "./Footer";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const products = [
-  {
-    id: 1,
-    name: "Earthen Bottle",
-    href: "#",
-    price: "$48",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/DSC03918.png",
-    imageAlt: "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
-  },
-  {
-    id: 2,
-    name: "Nomad Tumbler",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/kyt-product-part2_0044_DSC022381.png",
-    imageAlt: "Olive drab green insulated bottle with flared screw lid and flat top.",
-  },
-  {
-    id: 3,
-    name: "Focus Paper Refill",
-    href: "#",
-    price: "$89",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/kyt-product-part2_0035_DSC024762.png",
-    imageAlt: "Person using a pen to cross a task off a productivity paper card.",
-  },
-  {
-    id: 4,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/_DVD2896.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 5,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/kyt-produk-part1_0003_DSC024753.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 6,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/DSC06141.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 7,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/kyt-produk-part1_0003_DSC024753.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 8,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/DSC06009.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 9,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/DSC06404.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 10,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/DSC06139.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 11,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.kythelmet.com/uploads/images/product/full/DSC06008.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
-  {
-    id: 12,
-    name: "Machined Mechanical Pencil",
-    href: "#",
-    price: "$35",
-    imageSrc: "https://www.tarakusuma.com/upload/helmet/helmet_variants/1573036458_1954636837-3-aqua-blue-1.png",
-    imageAlt: "Hand holding black machined steel mechanical pencil with brass tip and top.",
-  },
 
-  // More products...
-];
+export default function Halface() {
+  const [product, setProduct] = useState([]);
 
-export default function Product() {
+  useEffect(() => {
+    getProduct();
+  }, []);
+
+  const getProduct = () => {
+    Axios.get(`https://raw.githubusercontent.com/KESYAPRIANSYAH/json/main/Halfface.json`)
+      .then((res) => {
+        const data = res.data;
+        setProduct(data.products);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  };
+
   return (
     <>
+      <div class=" pt-60 pb-60 bg-[url('112.png')] hidden sm:block"></div>
       <div class="bg-gray-300">
         <div class="flex justify-end mr-2">
           <Menu as="div" className="pt-20   relative inline-block text-left">
@@ -133,13 +54,7 @@ export default function Product() {
                 <div className="py-1">
                   <Menu.Item>
                     {({ active }) => (
-                      <a
-                        href="
-                      
-                      
-                      product"
-                        className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "block px-4 py-2 text-sm ")}
-                      >
+                      <a href="Product" className={classNames(active ? "bg-gray-100 text-gray-900" : "text-gray-700", "block px-4 py-2 text-sm")}>
                         Full Face
                       </a>
                     )}
@@ -161,21 +76,21 @@ export default function Product() {
       {/* // products */}
       <div className="bg-gray-300">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className=" text-center font-bold text-4xl text-black">HALFFACE</h2>
+          <h2 className=" text-center font-bold text-4xl text-black ">HALF FACE</h2>
 
           <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 pt-9">
-            {products.map((product) => (
-              <a key={product.id} href={product.href} className="group">
+            {product.map((products) => (
+              <a key={products.id} className="group">
                 <div className="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:aspect-h-8">
-                  <img src={product.imageSrc} alt={product.imageAlt} className="w-full h-full object-center object-cover group-hover:scale-110 transition duration-300 ease-in-out" g />
+                  <img src={products.url} alt={products.imageAlt} className="w-full h-full object-center object-cover group-hover:scale-90 transition duration-300 ease-in-out" />
                 </div>
-                <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-                <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p>
+                <h3 className="mt-4 text-sm text-gray-700 font-extrabold">{products.nama}</h3>
               </a>
             ))}
           </div>
         </div>
       </div>
+
       <Footer />
     </>
   );
